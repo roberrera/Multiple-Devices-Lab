@@ -11,27 +11,27 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView mListview;
-    ArrayAdapter<String> mListAdapter;
-    ArrayList<String> mList;
+    private ListView mListview;
+    private ArrayList<Number> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mList = new ArrayList<>();
-        mList.add("One");
-        mList.add("Two");
-        mList.add("Three");
-        mList.add("Four");
-        mList.add("Five");
-        mList.add("Six");
-
         mListview = (ListView) findViewById(R.id.listview);
-        mListAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, mList);
+        mList = new ArrayList<>();
+        Number number = Number.getInstance();
 
-        mListview.setAdapter(mListAdapter);
+        mList.add(new Number("One"));
+        mList.add(new Number("Two"));
+        mList.add(new Number("Three"));
+        mList.add(new Number("Four"));
+        mList.add(new Number("Five"));
+        mList.add(new Number("Six"));
+
+        CustomListAdapter listAdapter = new CustomListAdapter(this, mList);
+        mListview.setAdapter(listAdapter);
 
     }
 }
